@@ -32,6 +32,6 @@ char** generateParenthesis(int n, int* returnSize) {
     char *curr_str = malloc((2 * n + 1) * sizeof(*curr_str));
     curr_str[2*n] = '\0';
     result = backtrack(n, returnSize, -1, 0, 0, curr_str, result);
-    
+    free(curr_str);
     return result;
 }
