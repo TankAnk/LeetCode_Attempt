@@ -25,25 +25,32 @@ void split(struct ListNode *source, struct ListNode **left, struct ListNode **ri
   (*slow).next = NULL;
 }
 
-struct ListNode *merge(struct ListNode *left, struct ListNode *right)
+struct ListNode* merge(struct ListNode *left, struct ListNode *right)
 {
-  if (!left || !right)
-    return (!left) ? right : left;
+  struct ListNode dummy;
+  struct ListNode *traverse = &dummy;
+  dummy.next = NULL;
 
-  struct ListNode *result = NULL;
-  if ((*left).val < (*right).val)
+  while (left && right)
   {
-    result = left;
-    (*result).next = merge((*left).next, right);
+      if ((*left).val <= (*right).val)
+      {
+        (*traverse).next = left;
+        left = (*left).next;
+      }
+
+      else
+      {
+        (*traverse).next = right;
+        right = (*right).next;
+      }
+      
+      traverse = (*traverse).next;
   }
 
-  else
-  {
-    result = right;
-    (*result).next = merge(left,(*right).next);
-  }
+  (*traverse).next = (left) ? left : right;
 
-  return result;
+  return dummy.next;
 }
 
 void merge_sort(struct ListNode **head)
