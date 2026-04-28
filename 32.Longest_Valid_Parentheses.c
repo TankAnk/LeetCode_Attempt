@@ -31,6 +31,7 @@ int longestValidParentheses(char* s) {
     }
   }
 
+  free(stack);
   return result;
 }
 
