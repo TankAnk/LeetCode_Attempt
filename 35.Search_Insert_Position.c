@@ -15,7 +15,8 @@ int searchInsert(int* nums, int numsSize, int target) {
   
   printf("left: %d, right: %d, mid: %d\n", left, right, mid);
 
-  return (nums[mid] > target) ? mid : (mid + 1);
+  //return (nums[mid] > target) ? mid : (mid + 1);
+  return left;
 }
 
 int main()
