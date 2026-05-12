@@ -15,19 +15,6 @@ void add_string(char **result, int result_len, char *num, int num_len)
   }
 }
 
-void add_string(char **result, int result_len, char *num, int num_len)
-{
-  int carry = 0, result_digit, num_digit, sum;
-  for (int i = result_len - 1, j = num_len - 1; i >= 0; i--, j--)
-  {
-    result_digit = (*result)[i] - '0';
-    num_digit = (j < 0) ? 0 : num[j] - '0';
-    sum = result_digit + num_digit + carry;
-    (*result)[i] = sum % 10 + '0';
-    carry = sum / 10;
-  }
-}
-
 char* multiply(char* num1, char* num2) {
   if (num1[0] == '0' || num2[0] == '0')
     return "0";
