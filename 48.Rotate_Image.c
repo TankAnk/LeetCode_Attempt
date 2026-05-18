@@ -15,16 +15,12 @@ void swap(int *a, int *b)
 }
 
 void rotate(int** matrix, int matrixSize, int* matrixColSize) {
-  matrixColSize = malloc(matrixSize * sizeof(*matrixColSize));
-  for (int i = 0; i < matrixSize; i++)
-    matrixColSize[i] = matrixSize;
-  
   //Transpose
   for (int row = 0; row < matrixSize - 1; row++)
     for (int col = row + 1; col < matrixSize; col++)
       swap(&matrix[row][col], &matrix[col][row]);
 
-  //Reverse
+  //Reverse column
   for (int row = 0; row < matrixSize; row++)
     for (int col = 0; col < matrixSize / 2; col++)
       swap(&matrix[row][col], &matrix[row][matrixSize - col - 1]);
