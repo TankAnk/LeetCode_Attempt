@@ -1,34 +1,17 @@
 int solve(int** grid, int row_size, int col_size, int *memo, int row, int col)
 {
-  int idx = row * col_size + col;
-  if (grid[row][col] == 1)
-  {
-    memo[idx] = 0;
-    return memo[idx];
-  }
+  if (row >= row_size || col >= col_size)
+    return 0;
 
+  int idx = row * col_size + col;
   if (memo[idx] != -1)
     return memo[idx];
 
-  if (row == row_size - 1)
-  {
-    memo[idx] = 1;
-    for (int i = col + 1; i < col_size; i++)
-      if (grid[row][i] == 1)
-        memo[idx] = 0;
+  if (grid[row][col] == 1)
+    return memo[idx] = 0;
 
-    return memo[idx];
-  }
-
-  if (col == col_size - 1)
-  {
-    memo[idx] = 1;
-    for (int i = row + 1; i < row_size; i++)
-      if (grid[i][col] == 1)
-        memo[idx] = 0;
-
-    return memo[idx];
-  }
+  if (row == row_size - 1 && col == col_size - 1)
+    return memo[idx] = 1;
 
   memo[idx] = solve(grid, row_size, col_size, memo, row + 1, col) + solve(grid, row_size, col_size, memo, row, col + 1);
   return memo[idx];
