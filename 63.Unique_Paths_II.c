@@ -30,17 +30,13 @@ int solve(int** grid, int row_size, int col_size, int *memo, int row, int col)
     return memo[idx];
   }
 
-  solve(grid, row_size, col_size, memo, row + 1, col);
-  solve(grid, row_size, col_size, memo, row, col + 1);
-  int right_idx = idx + 1, down_idx = (row + 1) * col_size + col;
-  memo[idx] = memo[right_idx] + memo[down_idx];
+  memo[idx] = solve(grid, row_size, col_size, memo, row + 1, col) + solve(grid, row_size, col_size, memo, row, col + 1);
   return memo[idx];
 }
 
 /*
-0,0,0
-0,0,0
-0,0,1
+0,0
+0,1
 */
 
 int uniquePathsWithObstacles(int** obstacleGrid, int obstacleGridSize, int* obstacleGridColSize)
