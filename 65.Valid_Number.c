@@ -1,6 +1,8 @@
 bool isNumber(char* s)
 {
   int len = strlen(s);
+  if (len == 1)
+    return (48 <= s[0] && s[0] <= 57);
 
   int i = 0;
   //Handle sign at the beginning
