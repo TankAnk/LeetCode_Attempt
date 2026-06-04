@@ -9,13 +9,12 @@ This is just a Fibonnaci sequence because:
 01 02 03 05 08 13 21
 */
 
-int climbStairs(int n)
-{
+int climbStairs(int n) {
   if (n <= 3)
     return n;
 
-  int left = 1, right = 2, tmp;
-  for (int i = 0; i < n - 2; i++)
+  int left = 3, right = 5, tmp;
+  for (int i = 4; i < n; i++)
   {
     tmp = left + right;
     left = right;
