@@ -29,30 +29,30 @@ char* minWindow(char* s, char* t)
     if (window[key] <= occur[key])
       occur_count++;
 
+    window_end++;
+
     while (occur_count == t_len)
     {
-      if (window_end - window_start + 1 < min)
+      if (window_end - window_start < min)
       {
-        min = window_end - window_start + 1;
+        min = window_end - window_start;
         min_start = window_start;
       }
 
       key = hash_char(s[window_start]);
-
       window[key]--;
+
       if (window[key] < occur[key])
         occur_count--;
 
       window_start++;
     }
-
-    window_end++;
   }
 
   if (min <= s_len)
   {
-      memcpy(result, s + min_start, min * sizeof(*result));
-      result[min] = '\0';
+    memcpy(result, s + min_start, min * sizeof(*result));
+    result[min] = '\0';
   }
 
   free(occur);
@@ -60,3 +60,8 @@ char* minWindow(char* s, char* t)
 
   return result;
 }
+
+/*
+EADOAECAAAAANCF
+ACA
+*/
