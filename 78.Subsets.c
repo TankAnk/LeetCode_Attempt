@@ -33,6 +33,7 @@ int** subsets(int* nums, int numsSize, int* returnSize, int** returnColumnSizes)
   *returnSize = 1;
   int capacity = 128;
   int **result = malloc(capacity * sizeof(*result));
+  result[0] = NULL;
   *returnColumnSizes = malloc(capacity * sizeof(**returnColumnSizes));
   (*returnColumnSizes)[0] = 0;
   int *curr_arr = malloc(numsSize * sizeof(*curr_arr));
