@@ -5,7 +5,7 @@ int solve(int n, int total, int *result, int idx, int curr, int *visited)
 
   for (int i = 0; i < n; i++)
   {
-    int next = curr ^ (1 << i); //Toggle LSB
+    int next = curr ^ (1 << i); //Toggle bits
     if (!visited[next])
     {
       visited[next] = 1;
