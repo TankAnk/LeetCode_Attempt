@@ -1,3 +1,4 @@
+/*2D Top-down
 int solve(int *prices, int size, int day, int is_holding, int **memo)
 {
   if (day == size)
@@ -39,4 +40,24 @@ int maxProfit(int *prices, int pricesSize)
     free(memo[i]);
   free(memo);
   return result;
+}
+*/
+
+//2D Bottom-up
+int maxProfit(int *prices, int pricesSize)
+{
+  int memo[pricesSize][2];
+  memo[0][0] = 0;
+  memo[0][1] = -prices[0];
+
+  for (int day = 1; day < pricesSize; day++)
+  {
+    //Empty-handed today = max(empty-handed yesterday VS sell today, hold yesterday)
+    memo[day][0] = (memo[day - 1][0] > prices[day] + memo[day - 1][1]) ? memo[day - 1][0] : prices[day] + memo[day - 1][1];
+
+    //Hold today = max(hold yesterday VS buy today, empty-handed yesterday)
+    memo[day][1] = (memo[day - 1][1] > -prices[day] + memo[day - 1][0]) ? memo[day - 1][1] : -prices[day] + memo[day - 1][0];
+  }
+
+  return memo[pricesSize - 1][0];
 }
