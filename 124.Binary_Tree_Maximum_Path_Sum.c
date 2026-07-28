@@ -21,7 +21,7 @@ int solve(Node *root, int *bound)
 
 int maxPathSum(Node *root)
 {
-  int bound = -1001;
+  int bound = -3001;
   solve(root, &bound);
   return bound;
 }
