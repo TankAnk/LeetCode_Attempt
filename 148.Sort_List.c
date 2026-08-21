@@ -46,6 +46,8 @@ Node *sortList(Node *head)
           right = (*right).next;
           right_remain--;
         }
+
+        tail = (*tail).next;
       }
 
       while (left_remain > 0 && left)
@@ -71,5 +73,5 @@ Node *sortList(Node *head)
     run_size *= 2;
   }
 
-  reuturn dummy.next;
+  return dummy.next;
 }
