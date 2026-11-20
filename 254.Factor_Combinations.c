@@ -23,10 +23,6 @@ Output: [
 [8,3],[2,12]
 ]
 
-Pairs of factors w/ lower bound:
-Start w/ >= 2: [2,12]
-Start w/ >= 2: [2,2,6],[2,3,4]
-[2,2,6]
 Constraints: 1 <= n <= 10^9
 */
 
